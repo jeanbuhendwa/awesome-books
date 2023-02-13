@@ -1,0 +1,1 @@
+const books_list = document.querySelector(".books");
