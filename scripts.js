@@ -18,7 +18,9 @@ let bookStore = [
     author: "Authors2",
   },
 ];
-// Add book function
+
+
+
 function displayBook(book) {
     books_list.innerHTML += `
             <li id="${book.id}">
@@ -30,14 +32,28 @@ function displayBook(book) {
         `;
   }
 
-for (let i = 0; i < bookStore.length; i++) {
-    displayBook(bookStore[i]);
+//   Local storage
+function restoreLocalStorage(){
+    bookStore = JSON.parse(localStorage.getItem('book_list'));
+    for (let i = 0; i < bookStore.length; i++) {
+        displayBook(bookStore[i]);
+    }
+}
+
+function updateLocalStorage(){
+    localStorage.setItem('book_list', JSON.stringify(bookStore));
+}
+
+if(!localStorage.getItem('book_list')){
+    updateLocalStorage();
+}
+else{
+    restoreLocalStorage();
 }
 
 let book_count = bookStore.length - 1;
-
+// Add book function
 function addBook() {
-console.log(book_count);
   book_count++;
   let objBook = {
     id: "book_" + book_count,
@@ -47,6 +63,7 @@ console.log(book_count);
 
   bookStore.push(objBook);
   displayBook(objBook);
+  updateLocalStorage();
 }
 
 addBtn.addEventListener("click", addBook);
@@ -56,11 +73,11 @@ function removeBook(e){
     const parentli = e.target.parentElement;
     bookStore = bookStore.filter(book => book.id != parentli.id);
     books_list.removeChild(e.target.parentElement);
+    updateLocalStorage();
 }
 
 books_list.addEventListener('click', (e) => {
     if(e.target.className === "delete"){
         removeBook(e);
-        console.log(bookStore);
     }
 });
