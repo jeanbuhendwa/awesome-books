@@ -9,7 +9,29 @@
     <title>Awesome Books</title>
 </head>
 <body>
-    
+    <main>
+        <ul class="books">
+            <li>
+                <span class="name">Book1</span>
+                <span class="auther">Auther1</span>
+                <button type="submit" class="delete">Remove</button>
+                <hr>
+            </li>
+            <li>
+                <span class="name">Book2</span>
+                <span class="auther">Auther2</span>
+                <button type="submit" class="delete">Remove</button>
+                <hr>
+            </li>
+        </ul>
+        <form action="" method="post">
+            <label for="book_name"></label>
+            <input type="text" id="book_name">
+            <label for="auther_name"></label>
+            <input type="text" id="auther_name">
+            <button type="submit">Add</button>
+        </form>
+    </main>
     <script src="scripts.js"></script>
 </body>
 </html>
