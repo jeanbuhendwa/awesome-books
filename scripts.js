@@ -8,10 +8,12 @@ const addBtn = document.getElementById("addButton");
 
 let bookStore = [
   {
+    id: "book_0",
     title: "Book1",
     author: "Authors1",
   },
   {
+    id: "book_1",
     title: "Book2",
     author: "Authors2",
   },
@@ -19,7 +21,7 @@ let bookStore = [
 // Add book function
 function displayBook(book) {
     books_list.innerHTML += `
-            <li>
+            <li id="${book.id}">
                 <span class="name">${book.title}</span>
                 <span class="auther">${book.author}</span>
                 <button type="button" class="delete">Remove</button>
@@ -32,9 +34,13 @@ for (let i = 0; i < bookStore.length; i++) {
     displayBook(bookStore[i]);
 }
 
+let book_count = bookStore.length - 1;
 
 function addBook() {
+console.log(book_count);
+  book_count++;
   let objBook = {
+    id: "book_" + book_count,
     title : bookName.value,
     author : autName.value
   }
@@ -44,3 +50,17 @@ function addBook() {
 }
 
 addBtn.addEventListener("click", addBook);
+
+// Remove function.
+function removeBook(e){
+    const parentli = e.target.parentElement;
+    bookStore = bookStore.filter(book => book.id != parentli.id);
+    books_list.removeChild(e.target.parentElement);
+}
+
+books_list.addEventListener('click', (e) => {
+    if(e.target.className === "delete"){
+        removeBook(e);
+        console.log(bookStore);
+    }
+});
