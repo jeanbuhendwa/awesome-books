@@ -43,6 +43,9 @@ class Book {
     this.bookStore.push(objBook);
     this.displayBook(objBook);
     this.updateLocalStorage();
+
+    bookName.value = '';
+    autName.value = '';
   }
 
   removeBook(e) {
@@ -82,5 +85,26 @@ addBtn.addEventListener('click', () => {
 bookList.addEventListener('click', (e) => {
   if (e.target.className === 'delete') {
     newBook.removeBook(e);
+  }
+});
+
+const navList = document.querySelector('.nav-list');
+const bookSection = document.getElementById('book_section');
+const formSection = document.getElementById('form-section');
+const contactSection = document.getElementById('contact-section');
+
+navList.addEventListener('click', (event) => {
+  if (event.target.id === 'book-list') {
+    bookSection.classList.remove('disable-section');
+    formSection.classList.add('disable-section');
+    contactSection.classList.add('disable-section');
+  } else if (event.target.id === 'add-book') {
+    bookSection.classList.add('disable-section');
+    formSection.classList.remove('disable-section');
+    contactSection.classList.add('disable-section');
+  } else if (event.target.id === 'contact') {
+    bookSection.classList.add('disable-section');
+    formSection.classList.add('disable-section');
+    contactSection.classList.remove('disable-section');
   }
 });
