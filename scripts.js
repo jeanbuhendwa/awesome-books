@@ -25,7 +25,6 @@ class Book {
               <span class="name">${book.title}</span>
               <span class="auther">${book.author}</span>
               <button type="button" class="delete">Remove</button>
-              <hr>
           </li>
       `;
     };
