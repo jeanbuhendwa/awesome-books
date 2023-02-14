@@ -9,17 +9,19 @@
     <title>Awesome Books</title>
 </head>
 <body>
-    <main>
+    <main class="container">
+        <h2>All awesome books</h2>
         <section id="book_section">
             <ul class="books">
 
             </ul>
         </section>
         <form action="#" method="#">
+            <h2>Add a new book</h2>
             <label for="book_name"></label>
-            <input type="text" id="book_name">
+            <input type="text" id="book_name" placeholder="Add the book name" required>
             <label for="auther_name"></label>
-            <input type="text" id="auther_name">
+            <input type="text" id="auther_name" placeholder="Add the author name" required>
             <button type="submit" id="addButton">Add</button>
         </form>
     </main>
