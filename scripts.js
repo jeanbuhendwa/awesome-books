@@ -1,5 +1,4 @@
 const bookList = document.querySelector('.books');
-
 const bookName = document.getElementById('book_name');
 const autName = document.getElementById('auther_name');
 const addBtn = document.getElementById('addButton');
@@ -19,17 +18,17 @@ class Book {
       },
     ];
     this.bookCount = this.bookStore.length - 1;
-  }
 
-  displayBook(book) {
-    bookList.innerHTML += `
-              <li id="${book.id}">
-                  <span class="name">${book.title}</span>
-                  <span class="auther">${book.author}</span>
-                  <button type="button" class="delete">Remove</button>
-                  <hr>
-              </li>
-          `;
+    this.displayBook = (book) => {
+          bookList.innerHTML += `
+          <li id="${book.id}">
+              <span class="name">${book.title}</span>
+              <span class="auther">${book.author}</span>
+              <button type="button" class="delete">Remove</button>
+              <hr>
+          </li>
+      `;
+    };
   }
 
   addBook() {
@@ -54,6 +53,7 @@ class Book {
 
   restoreLocalStorage() {
     this.bookStore = JSON.parse(localStorage.getItem('book_list'));
+    this.bookCount = JSON.parse(localStorage.getItem('book_count'));
     for (let i = 0; i < this.bookStore.length; i += 1) {
       this.displayBook(this.bookStore[i]);
     }
@@ -61,12 +61,15 @@ class Book {
 
   updateLocalStorage() {
     localStorage.setItem('book_list', JSON.stringify(this.bookStore));
+    localStorage.setItem('book_count', JSON.stringify(this.bookCount));
   }
 }
+
 const newBook = new Book();
 
 if (!localStorage.getItem('book_list')) {
   newBook.updateLocalStorage();
+  newBook.restoreLocalStorage();
 } else {
   newBook.restoreLocalStorage();
 }
