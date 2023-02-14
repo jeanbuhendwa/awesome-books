@@ -165,7 +165,7 @@ I would like to thank Microverse.
 
 - **[Can I use this project for my website?]**
 
-  - [It's MIT license, feel free to use as you like.]
+  - [It's GNU license, feel free to use as you like.]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
