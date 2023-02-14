@@ -20,10 +20,12 @@ class Book {
     this.bookCount = this.bookStore.length - 1;
 
     this.displayBook = (book) => {
-          bookList.innerHTML += `
+      bookList.innerHTML += `
           <li id="${book.id}">
-              <span class="name">${book.title}</span>
-              <span class="auther">${book.author}</span>
+              <div class="content">
+                <span class="name">"${book.title}" by</span>
+                <span class="auther">${book.author}</span>
+              </div>
               <button type="button" class="delete">Remove</button>
           </li>
       `;
